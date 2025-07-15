@@ -3,6 +3,30 @@
   --header-height: 64px;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* ¡impide el scroll horizontal! */
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+app-header {
+  /*
+    Hacemos que TODO el componente <app-header>
+    quede fijo en la parte superior de la ventana
+  */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+  display: block; /* asegurar que ocupe todo el ancho */
+}
+
 html {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
