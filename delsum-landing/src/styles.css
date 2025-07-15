@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --header-height: 64px;
+}
+
+html {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+}
+
+body {
+  margin: 0;              /* elimina cualquier margen por defecto */
+  background: #121212;     /* o el color oscuro que uses en tu sección */
+  color: #fff;             /* texto blanco por defecto */
+}
+main {
+  background: transparent; /* para que el body oscuro se vea */
+}
+
+
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 4rem;
+  height: 4rem;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25D366;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.whatsapp-button img {
+  width: 60%;
+  height: auto;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+}
+
