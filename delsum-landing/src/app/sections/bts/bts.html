@@ -1,1 +1,40 @@
-<p>bts works!</p>
+<section id="bts" class="bts-section">
+  <div class="bts-grid">
+    <!-- Columna izquierda: título + subtítulo -->
+    <div class="bts-info">
+      <h2>Hecho a mano</h2>
+      <p class="subtitle">
+        Descubre el proceso artesanal que da vida a cada dim sum: manos expertas,
+        ingredientes frescos y dedicación en cada bocado.
+      </p>
+    </div>
+
+    <!-- Columna derecha: carousel -->
+    <div class="bts-carousel">
+      <p-galleria
+        [value]="images"
+        [responsiveOptions]="responsiveOptions"
+        [numVisible]="3"
+        [circular]="true"
+        [autoPlay]="true"
+        [transitionInterval]="3000"
+        [showThumbnails]="true"
+        [showItemNavigators]="true"
+        [showItemNavigatorsOnHover]="true"
+        class="custom-galleria"
+        [containerStyle]="{ 'max-width': '800px', 'margin': '0 auto', 'height': '50vh' }"
+      >
+        <ng-template pTemplate="item" let-image>
+          <img
+            [src]="image.itemImageSrc"
+            [alt]="image.title"
+            loading="lazy"
+          />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-image>
+          <img [src]="image.thumbnailImageSrc" [alt]="image.title" />
+        </ng-template>
+      </p-galleria>
+    </div>
+  </div>
+</section>

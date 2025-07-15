@@ -1,0 +1,118 @@
+.bts-section {
+  padding: 4rem 1rem;
+  background: #f9f9f9;
+  text-align: center;
+  color: #212121;
+}
+
+.bts-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.bts-section .subtitle {
+  font-size: 1.125rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.custom-galleria .p-galleria-content {
+  overflow: hidden;    /* no deja scroll interno */
+}
+
+/* Fuerza la altura del área de visualización */
+.custom-galleria ::ng-deep .p-galleria-content {
+  height: 300px !important;    /* misma altura que en containerStyle */
+  overflow: hidden;
+}
+
+/* Ajusta la imagen para que siempre se vea completa */
+.custom-galleria ::ng-deep .p-galleria-content img {
+  object-fit: contain;         /* muestra la imagen entera, agrega “letterbox” si hace falta */
+  width: 100%;
+  height: 100%;
+  background: #000;            /* opcional: fondo oscuro tras la imagen */
+}
+
+
+.custom-galleria img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* muestra toda la imagen dentro del contenedor */
+  display: block;
+  background: #000;    /* fondo negro para letterboxing si el ratio varía */
+}
+
+/* Opcional: ajustar miniaturas */
+.custom-galleria .p-galleria-thumbnails-container .p-galleria-thumbnail img {
+  object-fit: cover;
+}
+
+
+/* Reduce margen entre miniaturas */
+.custom-galleria .p-galleria-thumbnails-container .p-galleria-thumbnail {
+  margin: 0 0.25rem;
+}
+
+/* Flechas siempre visibles */
+.custom-galleria .p-galleria-nav-left,
+.custom-galleria .p-galleria-nav-right {
+  color: #bc1823;
+  opacity: 0.8;
+}
+
+.custom-galleria .p-galleria-nav-left:hover,
+.custom-galleria .p-galleria-nav-right:hover {
+  opacity: 1;
+}
+
+/* Grid de dos columnas */
+.bts-section .bts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+/* Información (izquierda) */
+.bts-info h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.bts-info .subtitle {
+  font-size: 1.125rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Carousel (derecha) */
+.bts-carousel {
+  width: 100%;
+}
+
+/* Ajustes del Galleria */
+.custom-galleria ::ng-deep .p-galleria-content {
+  height: 800px !important;
+  overflow: hidden;
+}
+.custom-galleria ::ng-deep .p-galleria-content img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+/* Responsivo: pasa a una columna en móvil */
+@media (max-width: 768px) {
+  .bts-section .bts-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .bts-info, .bts-carousel {
+    margin-bottom: 2rem;
+  }
+}
+

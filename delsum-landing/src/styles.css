@@ -18,6 +18,9 @@ main {
   background: transparent; /* para que el body oscuro se vea */
 }
 
+#bts {
+  scroll-margin-top: 80px;
+}
 
 
 .whatsapp-button {

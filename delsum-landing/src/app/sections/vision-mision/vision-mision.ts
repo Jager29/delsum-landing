@@ -1,12 +1,12 @@
+
 import { Component } from '@angular/core';
+import { FieldsetModule } from 'primeng/fieldset';
 
 @Component({
   selector: 'app-vision-mision',
-  imports: [],
   standalone: true,
+  imports: [FieldsetModule],
   templateUrl: './vision-mision.html',
-  styleUrl: './vision-mision.css'
+  styleUrls: ['./vision-mision.css']
 })
-export class VisionMision {
-
-}
+export class VisionMision {}
