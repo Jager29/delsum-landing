@@ -1,1 +1,42 @@
-<p>team works!</p>
+<section id="team" class="team-section" #teamSection>
+  <div class="team-container">
+    <!-- Imagen izquierda -->
+    <div
+      class="team-image left"
+      [@slideInLeft]="sectionVisible ? 'visible' : 'hidden'"
+    >
+      <img
+        src="assets/images/delisum/team1.jpg"
+        alt="Equipo Delisum - manos expertas"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Texto central -->
+    <div
+      class="team-text"
+      [@fadeIn]="sectionVisible ? 'visible' : 'hidden'"
+    >
+      <h2>Conoce a nuestro equipo</h2>
+      <p>
+        Estas manos expertas y dedicadas son las responsables de crear cada pieza
+        de nuestro dim sum artesanal. Desde la selección de los mejores ingredientes
+        hasta el meticuloso proceso de elaboración, nuestro equipo pone pasión y talento
+        en cada bocado para ofrecerte un sabor auténtico y fresco. ¡Confía en nosotros
+        para llevar la tradición directamente a tu mesa!
+      </p>
+    </div>
+
+    <!-- Imagen derecha -->
+    <div
+      class="team-image right"
+      [@slideInRight]="sectionVisible ? 'visible' : 'hidden'"
+    >
+      <img
+        src="assets/images/delisum/team2.jpg"
+        alt="Equipo Delisum - dedicación"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>

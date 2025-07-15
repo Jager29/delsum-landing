@@ -1,1 +1,40 @@
-<p>vision-mision works!</p>
+
+<section id="vision-mission" class="vision-mission-section">
+  <div class="vision-mission-container">
+    <!-- VISIÓN -->
+    <div #visionWrapper class="vision-wrapper" [@slideInLeft]="visionState">
+      <p-fieldset legend="Visión" toggleable="false">
+        <p>
+          “Nuestra visión es convertirnos en la fábrica líder de dim sam en el país,
+          expandiendo nuestra presencia y distribución en toda la ciudad y más allá.
+          Buscamos ser reconocidos por nuestra calidad constante, innovación y compromiso
+          con la autenticidad de la gastronomía china. En los próximos años, aspiramos
+          a hacer que nuestros productos estén disponibles en cada rincón del país,
+          promoviendo la cultura del dim sam y ofreciendo un producto accesible y
+          delicioso a todos los consumidores.”
+        </p>
+      </p-fieldset>
+      <div class="vision-image">
+        <img src="assets/images/delisum/vision.jpg" alt="Visión Delisum" loading="lazy"/>
+      </div>
+    </div>
+    <!-- MISIÓN -->
+    <div #misionWrapper class="mision-wrapper" [@slideInRight]="misionState">
+      <div class="mision-image">
+        <img src="assets/images/delisum/mision.jpg" alt="Misión Delisum" loading="lazy"/>
+      </div>
+      <p-fieldset legend="Misión" toggleable="false">
+        <p>
+          “Nuestra misión es ofrecer dim sam auténtico, delicioso y de la más alta calidad,
+          hecho con ingredientes frescos y tradicionales. Nos comprometemos a entregar
+          una experiencia gastronómica única y accesible, llevando la esencia de la cocina
+          china a cada hogar y negocio. Con un enfoque en la excelencia en la producción
+          y la satisfacción del cliente, buscamos expandirnos a nivel nacional y ser la
+          marca de referencia en la distribución de dim sam en toda la ciudad, brindando
+          conveniencia, frescura y sabor en cada bocado.”
+        </p>
+      </p-fieldset>
+    </div>
+  </div>
+</section>
+

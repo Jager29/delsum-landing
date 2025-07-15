@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GalleriaModule } from 'primeng/galleria';
+import {
+  trigger,
+  style,
+  transition,
+  animate
+} from '@angular/animations';
 
 interface BtsImage {
   itemImageSrc: string;
@@ -14,7 +20,21 @@ interface BtsImage {
   standalone: true,
   imports: [CommonModule, GalleriaModule],
   templateUrl: './bts.html',
-  styleUrls: ['./bts.css']
+  styleUrls: ['./bts.css'],
+    animations: [
+    trigger('slideInLeft', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-100px)' }),
+        animate('500ms ease-out', style({ opacity: 1, transform: 'none' }))
+      ])
+    ]),
+    trigger('slideInRight', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(100px)' }),
+        animate('500ms 200ms ease-out', style({ opacity: 1, transform: 'none' }))
+      ])
+    ])
+  ]
 })
 export class Bts {
   images: BtsImage[] = [

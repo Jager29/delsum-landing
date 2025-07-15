@@ -1,7 +1,7 @@
 <section id="bts" class="bts-section">
   <div class="bts-grid">
     <!-- Columna izquierda: título + subtítulo -->
-    <div class="bts-info">
+    <div class="bts-info" @slideInLeft>
       <h2>Hecho a mano</h2>
       <p class="subtitle">
         Descubre el proceso artesanal que da vida a cada dim sum: manos expertas,
@@ -10,7 +10,7 @@
     </div>
 
     <!-- Columna derecha: carousel -->
-    <div class="bts-carousel">
+    <div class="bts-carousel" @slideInRight>
       <p-galleria
         [value]="images"
         [responsiveOptions]="responsiveOptions"

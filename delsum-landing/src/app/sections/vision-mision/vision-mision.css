@@ -1,0 +1,55 @@
+/* src/app/sections/vision-mision/vision-mision.css */
+.vision-mission-section {
+  background: #333;
+  color: #f1f1f1;
+  padding: 4rem 1rem;
+}
+
+/* Flex container que wrappea y se adapta */
+.vision-mission-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Cada bloque ocupa el 48% en desktop, se apila en móvil */
+.vision-wrapper,
+.mision-wrapper {
+  flex: 1 1 48%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Las imágenes siempre llenan su contenedor, altura fija */
+.vision-image img,
+.mision-image img {
+  width: 100%;
+  height: 300px;        /* ajusta esta altura si la quieres más grande/pequeña */
+  object-fit: cover;
+  border-radius: .5rem;
+  display: block;
+}
+
+/* Fieldsets ocupan 100% del ancho de su wrapper */
+.vision-wrapper ::ng-deep .p-fieldset,
+.mision-wrapper ::ng-deep .p-fieldset {
+  width: 100%;
+}
+
+/* En móvil, todo al 100% y centrado */
+@media (max-width: 768px) {
+  .vision-wrapper,
+  .mision-wrapper {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+  /* Opcional: que la imagen salga arriba del fieldset */
+  .vision-image,
+  .mision-image {
+    order: 0 !important;
+  }
+}
