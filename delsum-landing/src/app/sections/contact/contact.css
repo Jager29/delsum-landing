@@ -1,0 +1,52 @@
+/* src/app/sections/contact/contact.css */
+.contact-section {
+  background: #ffffff;
+  padding: 4rem 1rem;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 400px; /* Altura fija para que el mapa ocupe bien */
+}
+
+.contact-info-card p-card {
+  height: 100%;
+}
+
+.company-data {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.company-data li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #333;
+}
+.company-data strong {
+  color: #bc1823;
+}
+
+.contact-map {
+  height: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Responsive: en móvil una sola columna */
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    height: auto; /* deja que el iframe se adapte */
+  }
+  .contact-map {
+    margin-top: 2rem;
+    height: 300px;
+  }
+}
