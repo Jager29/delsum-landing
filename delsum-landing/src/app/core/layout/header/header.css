@@ -33,11 +33,85 @@
   color: #000000; /* rojo primario */
 }
 
+/* Botón hamburguesa */
+.hamburger {
+  display: none;          /* oculto en desktop */
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+
 /* Responsive: menú colapsa en pantallas < 600px */
 @media (max-width: 600px) {
   .header-nav .menu {
     display: none;
   }
+  .hamburger {
+    display: block;
+  }
   /* Aquí podrías añadir un botón de “hamburguesa” si quieres */
+}
+
+
+/* Overlay */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 999;
+}
+
+/* Sidebar */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 75%;
+  max-width: 280px;
+  height: 100vh;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Botón cerrar */
+.close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: #212121;
+}
+
+/* Lista móvil */
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.mobile-menu ul li a {
+  color: #212121;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.mobile-menu ul li a:hover {
+  color: #bc1823;   /* tu rojo primario */
 }
 

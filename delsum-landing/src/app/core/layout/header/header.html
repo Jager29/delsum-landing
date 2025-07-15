@@ -1,8 +1,9 @@
 <nav class="header-nav">
   <div class="logo">
-    <!-- Escoge el logo que prefieras: logo.png o logo2.png -->
     <img src="/assets/images/delisum/logo2.jpg" alt="Delisum Logo">
   </div>
+
+  <!-- menú de escritorio -->
   <ul class="menu">
     <li><a href="#hero">Inicio</a></li>
     <li><a href="#products">Productos</a></li>
@@ -11,4 +12,25 @@
     <li><a href="#team">Equipo</a></li>
     <li><a href="#contact">Contacto</a></li>
   </ul>
+
+  <!-- 🍔 botón hamburguesa -->
+  <button class="hamburger" (click)="toggleMenu()" aria-label="Menú">
+    <i class="pi pi-bars"></i>
+  </button>
 </nav>
+
+<!-- overlay y sidebar los pones justo después -->
+<div class="mobile-overlay" *ngIf="mobileMenuOpen" (click)="toggleMenu()"></div>
+<aside class="mobile-menu" [class.open]="mobileMenuOpen">
+  <button class="close-btn" (click)="toggleMenu()" aria-label="Cerrar menú">
+    <i class="pi pi-times"></i>
+  </button>
+  <ul>
+    <li><a href="#hero" (click)="toggleMenu()">Inicio</a></li>
+    <li><a href="#products" (click)="toggleMenu()">Productos</a></li>
+    <li><a href="#bts" (click)="toggleMenu()">Hecho a mano</a></li>
+    <li><a href="#vision-mission" (click)="toggleMenu()">Visión & Misión</a></li>
+    <li><a href="#team" (click)="toggleMenu()">Equipo</a></li>
+    <li><a href="#contact" (click)="toggleMenu()">Contacto</a></li>
+  </ul>
+</aside>
