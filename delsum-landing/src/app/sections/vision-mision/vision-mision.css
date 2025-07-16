@@ -1,6 +1,5 @@
-/* src/app/sections/vision-mision/vision-mision.css */
 .vision-mission-section {
-  background: #333;
+  background: #1b1b1b;
   color: #f1f1f1;
   padding: 4rem 1rem;
 }
@@ -53,3 +52,27 @@
     order: 0 !important;
   }
 }
+/* ============ PINTAR SOLO LA PESTAÑA “Visión” ============ */
+.vision-wrapper ::ng-deep .p-fieldset-legend {
+  background-color: #bc1823 !important; /* rojo primario */
+  color: #ffffff !important;            /* texto blanco */
+  padding: 0.5rem 1rem;                  /* ajusta el relleno si quieres */
+  border-radius: 0.5rem 0.5rem 0 0;      /* redondear solo arriba */
+  box-shadow: none;                     /* opcional: quitar sombra si la hay */
+}
+
+/* Si PrimeNG usa un span interno, asegúrate de que el texto herede el color */
+.vision-wrapper ::ng-deep .p-fieldset-legend .p-fieldset-legend-text {
+  color: #ffffff !important;
+}
+
+.mision-wrapper ::ng-deep .p-fieldset-legend {
+  background-color: #bc1823 !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.mision-wrapper ::ng-deep .p-fieldset-legend .p-fieldset-legend-text {
+  color: #ffffff !important;
+}
+

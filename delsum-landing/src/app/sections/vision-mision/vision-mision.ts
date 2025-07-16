@@ -1,11 +1,4 @@
-// src/app/sections/vision-mision/vision-mision.ts
-import {
-  Component,
-  AfterViewInit,
-  OnDestroy,
-  ElementRef,
-  ViewChild
-} from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FieldsetModule } from 'primeng/fieldset';
 import {
   trigger,
@@ -23,46 +16,64 @@ import {
   styleUrls: ['./vision-mision.css'],
   animations: [
     trigger('slideInLeft', [
-      state('hidden', style({ transform: 'translateX(-100%)', opacity: 0 })),
-      state('visible', style({ transform: 'translateX(0)', opacity: 1 })),
+      state('hidden',  style({ opacity: 0, transform: 'translateX(-50px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateX(0)' })),
       transition('hidden => visible', animate('600ms ease-out')),
-      transition('visible => hidden', animate('600ms ease-in'))
+      transition('visible => hidden', animate('400ms ease-in'))
     ]),
     trigger('slideInRight', [
-      state('hidden', style({ transform: 'translateX(100%)', opacity: 0 })),
-      state('visible', style({ transform: 'translateX(0)', opacity: 1 })),
+      state('hidden',  style({ opacity: 0, transform: 'translateX(50px)' })),
+      state('visible', style({ opacity: 1, transform: 'translateX(0)' })),
       transition('hidden => visible', animate('600ms ease-out')),
-      transition('visible => hidden', animate('600ms ease-in'))
+      transition('visible => hidden', animate('400ms ease-in'))
     ])
   ]
 })
-export class VisionMision implements AfterViewInit, OnDestroy {
-  visionState: 'hidden' | 'visible' = 'hidden';
-  misionState: 'hidden' | 'visible' = 'hidden';
-  private observer!: IntersectionObserver;
+export class VisionMision implements OnInit {
+  visionState:  'hidden' | 'visible' = 'hidden';
+  misionState:  'hidden' | 'visible' = 'hidden';
+  isMobile = false;
 
-  @ViewChild('visionWrapper', { read: ElementRef }) visionEl!: ElementRef;
-  @ViewChild('misionWrapper', { read: ElementRef }) misionEl!: ElementRef;
-
-  ngAfterViewInit() {
-    this.observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.target === this.visionEl.nativeElement) {
-            this.visionState = e.isIntersecting ? 'visible' : 'hidden';
-          }
-          if (e.target === this.misionEl.nativeElement) {
-            this.misionState = e.isIntersecting ? 'visible' : 'hidden';
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-    this.observer.observe(this.visionEl.nativeElement);
-    this.observer.observe(this.misionEl.nativeElement);
+  /** Deshabilita **todas** las animaciones en móvil */
+  @HostBinding('@.disabled')
+  get disableAnimations() {
+    return this.isMobile;
   }
 
-  ngOnDestroy() {
-    this.observer.disconnect();
+  ngOnInit() {
+    this.isMobile = window.innerWidth < 768;
+
+    if (!this.isMobile) {
+      this.initIntersectionObserver();
+    } else {
+      // móvil: que siempre estén visibles
+      this.visionState = 'visible';
+      this.misionState = 'visible';
+    }
+  }
+
+  private initIntersectionObserver() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const isVis = entry.isIntersecting;
+        if (entry.target === this.visionEl) {
+          this.visionState = isVis ? 'visible' : 'hidden';
+        }
+        if (entry.target === this.misionEl) {
+          this.misionState = isVis ? 'visible' : 'hidden';
+        }
+      });
+    }, { threshold: 0.2 });
+
+    if (this.visionEl) observer.observe(this.visionEl);
+    if (this.misionEl) observer.observe(this.misionEl);
+  }
+
+  /** capturamos las referencias en getters para no usar document.query */
+  get visionEl(): HTMLElement | null {
+    return document.querySelector('.vision-wrapper');
+  }
+  get misionEl(): HTMLElement | null {
+    return document.querySelector('.mision-wrapper');
   }
 }
