@@ -1,0 +1,21 @@
+<section id="history" class="history-section">
+  <h2 class="history-title">Nuestra Historia</h2>
+  <div class="history-container">
+    <ng-container *ngFor="let item of items; let i = index">
+      <div
+        class="history-item"
+        [@fadeInOut]="states[i]"
+        [ngClass]="{ 'alt': i % 2 === 1 }"
+        [attr.data-idx]="i"
+      >
+        <div class="history-content">
+          <div class="history-year">{{ item.year }}</div>
+          <p>{{ item.text }}</p>
+        </div>
+        <div class="history-image">
+          <img [src]="item.image" alt="Historia {{ item.year }}" loading="lazy" />
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

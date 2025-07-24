@@ -1,43 +1,49 @@
-/* Productos Estrella */
-.products-section {
+/* Productos Estrella con fondo blanco */
+.products-section--white {
+  background: #fff;         /* blanco */
+  color: #212121;           /* texto oscuro */
   padding: 4rem 1rem;
+}
+
+.products-section--white .products-container {
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
 }
 
-.products-section h2 {
+.products-section--white h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
 }
 
-/* 2.1 Quitar padding extra y centrar los items */
-.products-carousel ::ng-deep .custom-carousel-content {
+/* Carousel: centrar items y quitar padding */
+.products-section--white .products-carousel ::ng-deep .custom-carousel-content {
   display: flex !important;
   justify-content: center !important;
-  gap: 1rem; /* espacio mínimo entre items */
+  gap: 1rem;
   padding: 0 !important;
 }
 
-/* 2.2 Eliminar el padding por defecto de cada item */
-.products-carousel ::ng-deep .p-carousel-item {
+.products-section--white .products-carousel ::ng-deep .p-carousel-item {
   padding: 0 !important;
 }
 
-/* 2.3 Aumentar tamaño de las cards */
-.product-card {
-  width: 18rem;   /* más ancho */
-  height: 18rem;  /* más alto */
-  margin: 0;      /* sin márgenes adicionales */
+/* Cards más grandes */
+.products-section--white .product-card {
+  width: 18rem;
+  height: 18rem;
+  margin: 0;
   border-radius: 0.5rem;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: transform 0.2s;
 }
 
-.product-card:hover {
+.products-section--white .product-card:hover {
   transform: translateY(-4px);
 }
 
-.product-card img {
+.products-section--white .product-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;

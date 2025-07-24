@@ -8,6 +8,7 @@ import { VisionMision } from '../../sections/vision-mision/vision-mision';
 import { Team } from '../../sections/team/team';
 import { Reviews } from '../../sections/reviews/reviews';
 import { Contact } from '../../sections/contact/contact';
+import { HistoryComponent } from '../../sections/history/history';
 
 @Component({
   selector: 'app-layout',
@@ -21,7 +22,8 @@ import { Contact } from '../../sections/contact/contact';
     VisionMision,
     Team,
     Reviews,
-    Contact
+    Contact,
+    HistoryComponent
   ],
   standalone: true,
   templateUrl: './layout.html',

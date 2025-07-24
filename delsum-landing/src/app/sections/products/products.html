@@ -1,19 +1,21 @@
-<section id="products" class="products-section">
-  <h2>Productos Estrella</h2>
-  <p-carousel
-    [value]="products"
-    [numVisible]="3"
-    [numScroll]="1"
-    [circular]="true"
-    [autoplayInterval]="3000"
-    [responsiveOptions]="responsiveOptions"
-    class="products-carousel"
-    contentStyleClass="custom-carousel-content"
-  >
-    <ng-template pTemplate="item" let-product>
-      <div class="product-card">
-        <img [src]="product.image" [alt]="product.name" loading="lazy">
-      </div>
-    </ng-template>
-  </p-carousel>
+<section id="products" class="products-section--white">
+  <div class="products-container">
+    <h2>Productos Estrella</h2>
+    <p-carousel
+      [value]="products"
+      [numVisible]="3"
+      [numScroll]="1"
+      [circular]="true"
+      [autoplayInterval]="3000"
+      [responsiveOptions]="responsiveOptions"
+      class="products-carousel"
+      contentStyleClass="custom-carousel-content"
+    >
+      <ng-template pTemplate="item" let-product>
+        <div class="product-card">
+          <img [src]="product.image" [alt]="product.name" loading="lazy" />
+        </div>
+      </ng-template>
+    </p-carousel>
+  </div>
 </section>
