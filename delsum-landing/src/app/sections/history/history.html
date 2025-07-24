@@ -1,21 +1,22 @@
 <section id="history" class="history-section">
-  <h2 class="history-title">Nuestra Historia</h2>
   <div class="history-container">
-    <ng-container *ngFor="let item of items; let i = index">
+    <h2>Nuestra Historia</h2>
+    <div class="timeline">
       <div
+        *ngFor="let item of items; let i = index"
         class="history-item"
-        [@fadeInOut]="states[i]"
-        [ngClass]="{ 'alt': i % 2 === 1 }"
-        [attr.data-idx]="i"
+        [@fadeIn]="states[i]"
       >
-        <div class="history-content">
-          <div class="history-year">{{ item.year }}</div>
+        <div
+          class="history-content"
+          [ngClass]="{ left: i % 2 === 0, right: i % 2 !== 0 }"
+        >
           <p>{{ item.text }}</p>
         </div>
         <div class="history-image">
-          <img [src]="item.image" alt="Historia {{ item.year }}" loading="lazy" />
+          <img [src]="item.image" alt="Historia Delisum" loading="lazy" />
         </div>
       </div>
-    </ng-container>
+    </div>
   </div>
 </section>

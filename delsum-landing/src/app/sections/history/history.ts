@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-
-interface HistoryItem {
-  year: string;
-  text: string;
-  image: string;
-}
+import {
+  trigger,
+  state,
+  style,
+  transition,
+  animate
+} from '@angular/animations';
 
 @Component({
   selector: 'app-history',
@@ -15,44 +15,75 @@ interface HistoryItem {
   templateUrl: './history.html',
   styleUrls: ['./history.css'],
   animations: [
-    trigger('fadeInOut', [
+    trigger('fadeIn', [
       state('hidden', style({ opacity: 0, transform: 'translateY(20px)' })),
       state('visible', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('hidden => visible', animate('600ms ease-out')),
-      transition('visible => hidden', animate('400ms ease-in'))
+      transition('hidden => visible', animate('600ms ease-out'))
     ])
   ]
 })
-export class HistoryComponent implements OnInit {
-  items: HistoryItem[] = [
-    { year: '1990', text: 'Comenzamos en Lung Fung como un pequeño taller familiar, perfeccionando nuestras recetas de shaomai y hakao.', image: 'assets/images/delisum/his1.jpg' },
-    { year: '2000', text: 'Incorporamos métodos de congelado rápido para preservar la frescura y el sabor en cada bocado.', image: 'assets/images/delisum/his2.jpg' },
-    { year: '2010', text: 'Expandimos nuestra producción y abrimos nuestra primera fábrica con maquinaria de última generación.', image: 'assets/images/delisum/his3.jpg' },
-    { year: '2018', text: 'Nos convertimos en la marca líder de dim sum congelado en toda la ciudad de Panamá.', image: 'assets/images/delisum/his5.jpg' },
-    { year: '2025', text: 'Hoy seguimos innovando en sabor y calidad, llevando lo mejor del dim sum a tu mesa.', image: 'assets/images/delisum/his6.jpg' }
+export class History implements OnInit {
+  // Los 7 pasos de tu historia
+  items = [
+    {
+      text: 'Nuestra aventura comenzó en los tradicionales salones de Lung Fung, donde recetas centenarias de dim sum pasaron de generación en generación.',
+      image: 'assets/images/delisum/his1.jpg'
+    },
+    {
+      text: 'Las manos expertas de nuestra familia perfeccionaron cada siu mai y hakao, convirtiéndolos en sinónimo de auténtica cocina cantonesa.',
+      image: 'assets/images/delisum/his2.jpg'
+    },
+    {
+      text: 'Pronto, nuestros dim sum se convirtieron en un orgullo local, deleitando paladares exigentes con su frescura y sabor.',
+      image: 'assets/images/delisum/his3.jpg'
+    },
+    {
+      text: 'Sentimos el deseo de compartir esa tradición en cada hogar, más allá de las puertas del restaurante.',
+      image: 'assets/images/delisum/his4.jpg'
+    },
+    {
+      text: 'Así nació Delisum: la versión congelada de nuestros dim sum artesanales para que disfrutes en casa sin perder calidad.',
+      image: 'assets/images/delisum/his5.jpg'
+    },
+    {
+      text: 'Incorporamos técnicas de congelado rápido que aseguran una textura y frescura inigualables en cada bocado.',
+      image: 'assets/images/delisum/his6.jpg'
+    },
+    {
+      text: 'Hoy, Delisum mantiene vivo el legado de Lung Fung, llevando la esencia de nuestra cocina cantonesa directamente a tu mesa.',
+      image: 'assets/images/delisum/his7.jpg'
+    }
   ];
 
-  states: ('hidden' | 'visible')[] = [];
+  // Control de estados para la animación
+  states: ('hidden'|'visible')[] = [];
 
-  constructor(private el: ElementRef) { }
+  constructor(private host: ElementRef) {}
 
   ngOnInit() {
+    // Todos ocultos al inicio
     this.states = this.items.map(() => 'hidden');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        // ---------- LÍNEA CORREGIDA ----------
-        // LÍNEA CORREGIDA:
-        const idx = Number((entry.target as HTMLElement).dataset['idx']!);
 
-        this.states[idx] = entry.isIntersecting ? 'visible' : 'hidden';
-      });
-    }, { threshold: 0.25 });
-
+    // IntersectionObserver para disparar fadeIn al entrar en pantalla
     setTimeout(() => {
-      this.el.nativeElement
-        .querySelectorAll('.history-item')
-        .forEach((el: HTMLElement) => observer.observe(el));
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const idx = Number((entry.target as HTMLElement).dataset['idx']);
+              this.states[idx] = 'visible';
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      const els: NodeListOf<HTMLElement> =
+        this.host.nativeElement.querySelectorAll('.history-item');
+      els.forEach((el, i) => {
+        el.dataset['idx'] = i.toString();
+        observer.observe(el);
+      });
     });
   }
-
 }

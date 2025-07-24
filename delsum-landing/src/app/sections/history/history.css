@@ -1,60 +1,84 @@
+/* contenedor general */
 .history-section {
   background: #121212;
-  color: #fff;
+  color: #ffffff;
   padding: 4rem 1rem;
-  text-align: center;
-}
-.history-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
 }
 .history-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-  max-width: 900px;
+  position: relative;
+  max-width: 1000px;
   margin: 0 auto;
 }
+.history-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* línea vertical del timeline */
+.timeline {
+  position: relative;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: #bc1823;
+}
+
+/* cada ítem */
 .history-item {
   display: flex;
   align-items: center;
-  gap: 2rem;
-  opacity: 0;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  width: 100%;
 }
-.history-item.alt {
-  flex-direction: row-reverse;
+
+/* texto e imagen ocupan 48% */
+.history-content,
+.history-image {
+  width: 48%;
 }
-.history-content {
-  flex: 1;
+
+/* alternar alineación de texto */
+.history-content.left {
+  text-align: right;
+  padding-right: 2rem;
+}
+.history-content.right {
   text-align: left;
-}
-.history-year {
-  font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+  padding-left: 2rem;
 }
 .history-content p {
-  margin: 0;
+  font-size: 1.125rem;
   line-height: 1.6;
 }
-.history-image {
-  flex: 1;
-}
+
+/* imagen con bordes redondeados */
 .history-image img {
   width: 100%;
-  max-height: 250px;
-  object-fit: cover;
   border-radius: 0.5rem;
   display: block;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
 }
+
+/* móvil: todo en columna, timeline a la izquierda */
 @media (max-width: 768px) {
-  .history-item,
-  .history-item.alt {
+  .history-item {
     flex-direction: column;
     text-align: center;
+    padding-left: 1rem;
   }
-  .history-image img {
-    max-height: 200px;
+  .timeline::before {
+    left: 8px;
+  }
+  .history-content,
+  .history-image {
+    width: 100%;
+    padding: 0;
   }
 }

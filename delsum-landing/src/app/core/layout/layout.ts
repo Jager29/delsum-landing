@@ -8,7 +8,7 @@ import { VisionMision } from '../../sections/vision-mision/vision-mision';
 import { Team } from '../../sections/team/team';
 import { Reviews } from '../../sections/reviews/reviews';
 import { Contact } from '../../sections/contact/contact';
-import { HistoryComponent } from '../../sections/history/history';
+import { History } from '../../sections/history/history';
 
 @Component({
   selector: 'app-layout',
@@ -23,7 +23,7 @@ import { HistoryComponent } from '../../sections/history/history';
     Team,
     Reviews,
     Contact,
-    HistoryComponent
+    History
   ],
   standalone: true,
   templateUrl: './layout.html',
