@@ -1,21 +1,43 @@
-<section id="products" class="products-section--white">
-  <div class="products-container">
-    <h2>Productos Estrella</h2>
-    <p-carousel
-      [value]="products"
-      [numVisible]="3"
-      [numScroll]="1"
-      [circular]="true"
-      [autoplayInterval]="3000"
-      [responsiveOptions]="responsiveOptions"
-      class="products-carousel"
-      contentStyleClass="custom-carousel-content"
-    >
-      <ng-template pTemplate="item" let-product>
-        <div class="product-card">
-          <img [src]="product.image" [alt]="product.name" loading="lazy" />
-        </div>
-      </ng-template>
-    </p-carousel>
+<section id="products" class="products-section white-bg">
+  <h2>Productos Estrella</h2>
+
+  <!-- 1) Bloque de precios destacado -->
+  <div class="prices-overview">
+    <div class="price-item">
+      <span class="product-name">Siu Mai (12 uds)</span>
+      <span class="product-price">$ 9.75</span>
+    </div>
+    <div class="price-item">
+      <span class="product-name">Hakao (12 uds)</span>
+      <span class="product-price">$ 10.75</span>
+    </div>
+  </div>
+
+  <!-- 2) Carrusel sólo con imágenes -->
+  <p-carousel
+    [value]="products"
+    [numVisible]="3"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    [responsiveOptions]="responsiveOptions"
+    class="products-carousel"
+    contentStyleClass="custom-carousel-content"
+  >
+    <ng-template pTemplate="item" let-product>
+      <div class="product-card">
+        <img [src]="product.image" [alt]="product.name" loading="lazy" />
+      </div>
+    </ng-template>
+  </p-carousel>
+
+  <!-- 3) Nota de WhatsApp -->
+  <div class="order-info">
+    <p class="order-note">
+      Para realizar pedidos escríbenos al
+      <a href="https://wa.me/50766497636" target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </p>
   </div>
 </section>
